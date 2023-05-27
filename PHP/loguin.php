@@ -35,7 +35,7 @@
                             <input type="submit" class="submit" value="iniciar sesion">
                         </div>
                         <div class="signin">
-                            <span>¿Ya tienes una cuenta? <a href="#">crea una ahora</a></span>
+                            <span>¿Ya tienes una cuenta? <a href="registro.php">crea una ahora</a></span>
                         </div>
                      </div>
                 </div>

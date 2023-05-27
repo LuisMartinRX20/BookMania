@@ -31,7 +31,7 @@
                             <input type="button" class="submit" id="btn-siguiente" value="Siguiente">
                         </div>
                         <div class="signin">
-                            <span>¿Ya tienes una cuenta? <a href="#">inicia sesion</a></span>
+                            <span>¿Ya tienes una cuenta? <a href="loguin.php">inicia sesion</a></span>
                             <br>
                             <p>Paso 1 de 4</p>
                             
