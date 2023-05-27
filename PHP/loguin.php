@@ -33,7 +33,6 @@
                         </div>
                         <div class="input-field">
                             <input type="submit" class="submit" value="iniciar sesion">
-                            
                         </div>
                         <div class="signin">
                             <span>¿Ya tienes una cuenta? <a href="#">crea una ahora</a></span>
