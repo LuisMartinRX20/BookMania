@@ -11,3 +11,4 @@ if(mysqli_connect_errno()){
 	echo 'No se pudo conectar a la base de datos : '.mysqli_connect_error();
 }
 ?>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
