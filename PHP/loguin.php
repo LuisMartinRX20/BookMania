@@ -19,7 +19,7 @@
         $correo= $_POST['correo'];
         $password= $_POST['password'];
         $pass_sha1=sha1($password);
-        $query= "SELECT COUNT(*) AS contar FROM usuarios WHERE correo='$correo' and password='$pass_sha1'";
+        $query= "SELECT COUNT(*) AS contar FROM usuarios WHERE correo='$correo' and password='$password'";
         $consulta= mysqli_query($con,$query);
         // echo "el usuario es: ". $usuario;
         $array = mysqli_fetch_array($consulta);
