@@ -1,3 +1,112 @@
+<?php 
+
+    include ('conexion.php');
+
+    if(isset($_POST['btn-enviar'])){
+		    
+            $correo = mysqli_real_escape_string($con,(strip_tags($_POST["correo"],ENT_QUOTES)));//Escanpando caracteres 
+            $nombre	= mysqli_real_escape_string($con,(strip_tags($_POST["nombre"],ENT_QUOTES)));//Escanpando caracteres 
+            $apellido = mysqli_real_escape_string($con,(strip_tags($_POST["apellido"],ENT_QUOTES)));//Escanpando caracteres 
+            $telefono = mysqli_real_escape_string($con,(strip_tags($_POST["telefono"],ENT_QUOTES)));
+            $password = mysqli_real_escape_string($con,(strip_tags($_POST["password"],ENT_QUOTES)));
+            $passwordDos = mysqli_real_escape_string($con,(strip_tags($_POST["passwordDos"],ENT_QUOTES)));
+
+            /*Cracion de la variabble rol */
+            $rol = 0;
+
+            /*Variables de verificacion*/ 
+            $longitudp1 = strlen($password);
+            $longitudp2 = strlen($password);
+            $longitudp3 = strlen($telefono);
+
+            /*Validacion del campo telefono*/
+
+            if($longitudp3 >10 || $longitudp3<10){?>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'El numero de telefono debe de ser ingresado en formato de 10 digitos'
+                  })
+                })
+                </script>
+            <?php }
+
+            /*Validacion de los campos contraseña*/
+
+            else if($longitudp1< 8 || $longitudp2 < 8){?>
+                <script>
+
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'La contraseña debe de de tener como minimo 8 caracteres'
+                  })
+                })
+                </script>
+
+            <?php 
+            }else if($password != $passwordDos){?>
+                <script>
+
+                document.addEventListener("DOMContentLoaded", function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'La contraseña no coincide'
+                  })
+                })
+                </script>
+
+            <?php 
+            }else{
+
+                echo 'Se han introducido los datos correctamente';
+
+                /* preparo la contraseña para ser encrytada*/
+
+                $pass_sha1=sha1($password);
+
+                /* realizo una consulta a la base de datos para saber si existe un usurio con ese correo*/
+                $miConsulta = "SELECT * FROM usuarios WHERE correo='$correo'";
+
+                /* ejecuto la consulta */
+                $cek = mysqli_query($con, $miConsulta);
+
+                   
+                if(mysqli_num_rows($cek) == 0){
+
+                    $miConsulta = "INSERT INTO usuarios (correo,nombre,apellido,telefono,password,rol) VALUES('$correo','$nombre','$apellido','$telefono','$password','$rol')"; //crear la consulta del INSERT INTO 
+                    $insert = mysqli_query($con,$miConsulta) or die(mysqli_error($con));
+
+                    if($insert){?>
+                        <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                        // Tu código SweetAlert aquí
+                        Swal.fire({
+                                title: "Registrado",
+                                text: "El usuario se ha guardado correctamente",
+                                icon: "success",
+                                confirmButtonText: "Ok"
+                            }).then(function() {
+                                window.location.href = "loguin.php";
+                            });
+                        });
+                        </script>
+                    <?php 
+                    
+                    }else{
+                    echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
+                    }
+             
+                }else{
+                    echo 'Ya existe un usuario registrado con ese correo';
+                }
+            }       
+        }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +118,7 @@
     <title>Bookmania:inicio de sesion</title>
 </head>
 <body>
-    <form action="">
+    <form action="registro.php" method="post" role="form">
     <div class="wrapper">
         <div class="container main">
             <div class="row">
@@ -24,7 +133,7 @@
                      <div class="input-box">
                         <header>Ingresa tu correo</header>
                         <div class="input-field">
-                            <input type="text" class="input" id="correo" required autocomplete="off">
+                            <input type="text" name="correo" class="input" id="correo" required autocomplete="off">
                             <label for="correo">Correo</label>
                         </div>
                         <div class="input-field">
@@ -43,11 +152,11 @@
                      <div class="input-box">
                         <header>Ingresa tu nombre</header>
                         <div class="input-field">
-                            <input type="text" class="input" id="nombre" required autocomplete="off">
+                            <input type="text" name="nombre" class="input" id="nombre" required autocomplete="off">
                             <label for="nombre">Nombre</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" class="input" id="apellido" required>
+                            <input type="text" name="apellido" class="input" id="apellido" required>
                             <label for="apellido">Apellido</label>
                         </div>
                         <div class="input-field">
@@ -65,7 +174,7 @@
                      <div class="input-box">
                         <header>Ingresa tu telefono</header>
                         <div class="input-field">
-                            <input type="text" class="input" id="telefono" required autocomplete="off">
+                            <input type="text" name="telefono" class="input" id="telefono" required autocomplete="off">
                             <label for="telefono">Telefono</label>
                         </div>
             
@@ -84,15 +193,15 @@
                      <div class="input-box">
                         <header>Ingresa una contraseña</header>
                         <div class="input-field">
-                            <input type="text" class="input" id="password" required autocomplete="off">
+                            <input type="text" name="password" class="input" id="password" required autocomplete="off">
                             <label for="password">Contraseña</label>
                         </div>
                         <div class="input-field">
-                            <input type="text" class="input" id="veri_password" required>
+                            <input type="text" name="passwordDos" class="input" id="veri_password" required>
                             <label for="veri_password">Confirmar contraseña</label>
                         </div>
                         <div class="input-field">
-                            <input type="submit" class="submit" value="Registrar">
+                            <input type="submit" name="btn-enviar" class="submit" value="Registrar">
                             <input type="button" id="btn-anterior3" class="submit" value="Anterior">
                             
                         </div>
