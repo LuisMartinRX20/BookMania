@@ -26,10 +26,10 @@
                 document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: 'Telefono no valido',
                     text: 'El numero de telefono debe de ser ingresado en formato de 10 digitos'
-                  })
-                })
+                  });
+                });
                 </script>
             <?php }
 
@@ -41,7 +41,7 @@
                 document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: 'Contraseña no valida',
                     text: 'La contraseña debe de de tener como minimo 8 caracteres'
                   })
                 })
@@ -54,10 +54,10 @@
                 document.addEventListener("DOMContentLoaded", function() {
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: 'Contraseña no valida',
                     text: 'La contraseña no coincide'
-                  })
-                })
+                  });
+                });
                 </script>
 
             <?php 
@@ -86,7 +86,7 @@
                         document.addEventListener("DOMContentLoaded", function() {
                         // Tu código SweetAlert aquí
                         Swal.fire({
-                                title: "Registrado",
+                                title: "Usuario registrado",
                                 text: "El usuario se ha guardado correctamente",
                                 icon: "success",
                                 confirmButtonText: "Ok"
@@ -101,9 +101,20 @@
                     echo '<div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Error. No se pudo guardar los datos !</div>';
                     }
              
-                }else{
-                    echo 'Ya existe un usuario registrado con ese correo';
-                }
+                }else{?>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                    // Tu código SweetAlert aquí
+                    Swal.fire({
+                            title:"Usuario no registrado",
+                            text: "El correo ya se encuentra asociado a una cuenta",
+                            icon: "error",
+                            confirmButtonText: "Ok"
+                        });
+                    });
+                    
+                    </script>
+              <?php }
             }       
         }
 ?>
