@@ -37,6 +37,11 @@
                 <li>
                     <a href="">Perfil</a>
                 </li>
+
+                <li>
+                    <a href="cerrar-sesion.php"><img src="../ICONS/log-out.svg" alt=""></a>
+                </li>
+
             </ul>
         </nav>
     </header>
