@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+ul{
+    margin-bottom: 0rem;
+    padding-left: 0rem;
+}
+
 body{
     background: #efefef;
 }
@@ -32,11 +37,11 @@ header{
     display: none;
 }
 
-.nav-bar ul{
+.nav-barra ul{
     display: flex;
 }
 
-.nav-bar ul li a {
+.nav-barra ul li a {
     display: block;
     color: black;
     font-weight: bold;
@@ -46,19 +51,16 @@ header{
     margin: 0 5px;
 }
 
-.nav-bar ul li a:hover{
+.nav-barra ul li a:hover{
     color: #8480F2;
     background: #EBEDEF ;
 }
 
-.nav-bar ul li a.active{
+.nav-barra ul li a.active{
     color: #8480F2;
     background: #EBEDEF ;
 }
 
-img{
-    
-}
 
 @media only screen and (max-width: 1320px){
     header{
@@ -84,7 +86,7 @@ img{
         background: black;
         margin: 6px 0;
     }
-    .nav-bar{
+    .nav-barra{
         height: 0;
         position: absolute;
         top: 80px;
@@ -96,11 +98,11 @@ img{
         overflow: hidden;
     }
 
-    .nav-bar.active{
+    .nav-barra.active{
         height: 450px;
     }
 
-    .nav-bar ul{
+    .nav-barra ul{
         display: block;
         width: fit-content;
         margin: 80px auto 0 auto;
@@ -109,11 +111,11 @@ img{
         opacity: 0;
     }
 
-    .nav-bar.active ul{
+    .nav-barra.active ul{
         opacity: 1;
     }
 
-    .nav-bar ul li a{
+    .nav-barra ul li a{
         margin-bottom: 12px;
     }
 }

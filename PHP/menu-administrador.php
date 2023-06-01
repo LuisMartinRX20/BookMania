@@ -16,10 +16,10 @@
             <div class="line"></div>
 
         </div>
-        <nav class="nav-bar">
+        <nav class="nav-barra">
             <ul>
                 <li>
-                    <a href="" class="active">Inicio</a>
+                    <a href="inicio-administrador.php" class="active">Inicio</a>
                 </li>
 
                 <li>
@@ -27,7 +27,7 @@
                 </li>
 
                 <li>
-                    <a href="">Productos</a>
+                    <a href="libros.php">Libros</a>
                 </li>
 
                 <li>

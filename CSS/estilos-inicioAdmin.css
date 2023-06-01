@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+a{
+    text-decoration: none;
+}
+ul{
+    margin-bottom: 0rem;
+}
+
 .container{
     margin-top: 5%;
 }
