@@ -18,7 +18,6 @@
         require 'conexion.php';
 
         $correo=$_SESSION['cuentaUsuario'][0];
-        var_dump($correo);
 
         $query ="SELECT nombre,apellido,rol FROM usuarios WHERE correo='$correo'";
         $consulta = mysqli_query($con,$query);
