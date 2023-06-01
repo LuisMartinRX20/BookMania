@@ -26,8 +26,9 @@
     
         if($array['contar']>0){
             //crear una variable de sesion
-            $_SESSION['username']=$usuario;
-            header("location: menu-administrador.php");
+            $_SESSION['cuentaUsuario']= array();
+            $_SESSION['cuentaUsuario'][0]=$correo;
+            header("location: inicio-administrador.php");
         }else{?>
         <script>
             Swal.fire({

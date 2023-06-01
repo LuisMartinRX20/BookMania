@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">BookaMania</div>
+        <div class="logo">BookMania</div>
         <div class="desplegar">
             <div class="line"></div>
             <div class="line"></div>
